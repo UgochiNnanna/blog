@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .intro{
+        border: 1px solid red;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .intro-text{
+        color: saddlebrown;
+        font-size: large;
+        font-family: cursive;
+        font-weight: bold;
+    }
+
+    .links{
+        margin-right: 5px;
+    }
+
+    .links a{
+        margin: 3px;
+        font-family: cursive;
+        font-style: inherit;
+        font-size: 21px;
+    }
+
+    .links a:hover{
+        color: black;
+    }
+
+    .home-tag{
+        color: blue;
+    }
+
+    .about-tag{
+        color: green;
+    }
+
+    .shop-tag{
+        color: red;
+    }
+
+    .input{
+        margin-top: 70px;  
+    }
+    
+    .myinput{
+        width: 50%;
+        padding-left: 4px;
+        margin-left: 3px;
+    }
+</style>
+<body>
+    <div class="intro">
+        <div class="intro-text">
+            <h1>Welcome to PishureChat</h1>
+        </div>
+
+        <div class="links">
+            <a href="tutorial.html" class="home-tag">Home</a>
+            <a href="www.pishurechat.com" class="about-tag">About</a>
+            <a href="www.pishurechat.com" class="shop-tag">Shop</a>
+        </div>
+    </div>
+
+    <div class="input">
+        <input class="myinput" type="text" placeholder="First Name">
+        <input class="myinput" type="password" placeholder="Password">
+        <input class="myinput" type="number" placeholder="Phone Number">
+    </div>
+
+    <div class="but">
+        <button type="button">Login</button>
+    </div>
+
+</body>
+</html>
