@@ -53,6 +53,7 @@ def create_reel(request):
     return render(request, 'reel.html', context)
 
 
+#View post
 def view_post(request):
     get_post = Post.objects.all()
     context = {
