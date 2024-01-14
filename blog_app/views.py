@@ -17,7 +17,7 @@ def create_post(request):
             instance.save()
             message = f"The post {get_post_name} was created successfully"
     context = {
-        "comment_form":form,
+        "post_form":form,
         "greet":"Hello",
         'success_message':message
     }
@@ -26,8 +26,8 @@ def create_post(request):
 
 def create_comment(request):
     form = CommentForm
-    if request.method == "COMMENT":
-        form = CommentForm(request.COMMENT or None)
+    if request.method == "POST":
+        form = CommentForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user.is_valid
@@ -40,8 +40,8 @@ def create_comment(request):
 
 def create_reel(request):
     form = ReelForm
-    if request.method == "REEL":
-        form = ReelForm(request.REEL or None)
+    if request.method == "POST":
+        form = ReelForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user
@@ -66,3 +66,25 @@ def delete_post(request, id):
     query_post = Post.objects.get(id=id)
     query_post.delete()
     return redirect('/all_post/')
+
+def view_post_and_comment(request,ID, title):
+    message = None
+    query_post = Post.objects.get(id=int(ID))
+    query_comment = Comment.objects.filter(to_post_id=int(ID))
+    form = CommentForm
+    if request.method == "POST":
+        form = CommentForm(request.POST or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author_id = request.user.id
+            instance.to_post_id = query_post.id
+            instance.save()
+            message = f"Your comment on{query_post.title}has been published"
+            return redirect(f"/post/{ID}/{title}/")
+    context = {
+        "message":message,
+        "query_post":query_post,
+        "query_comment":query_comment,
+        "comment_form":form
+    }
+    return render(request,"view_full_post.html", context)

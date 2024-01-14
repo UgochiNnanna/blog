@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
@@ -18,7 +19,8 @@ class Post(models.Model):
 class Comment(models.Model):
     title = models.CharField(default="", max_length=100, blank=False)
     comment_body = models.TextField(default="", max_length=1000, blank=False)
-    author = models.CharField(default="", max_length=50, blank=False)
+    author = models.ForeignKey(User, on_delete=models.Case, null=True)
+    to_post  = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
