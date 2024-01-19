@@ -7,6 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        <h2 class="title">
+            {{query_post.title}}
+        </h2>
+    </div>
+    <div class="article-container">
+        <p class="article">
+            {{query_post.article}}
+        </p>
+    </div>
+    <br>
+    {%for comment in query_comment%}
+    <p>{{comment.body}}</p>
+    {%endfor%}
+    <br>
+    <hr>
+    {%if message%}
+    <h3>{{message}}</h3>
+    {%endif%}
+    <div class="form-container">
+        <form method="POST">
+            {%csrf_token%}
+            {{comment_form.as_p}}
+            <button type="submit">Comment</button>
+        </form>
+    </div>    
 </body>
 </html>
