@@ -17,9 +17,8 @@
         margin-top: 5rem;
     }
 
-    form {
+    form{
         max-width: 376px;
-        margin-top: 12rem;
     }
 
     /* Style for the message paragraph */
@@ -58,7 +57,7 @@
 
 <body>
     <div class="container mt-5">
-        <form action="" method="POST" class="m-auto" style="max-width: 376px;" autocomplete="off">
+        <form action="" method="POST" class="m-auto" style="max-width: 376px; margin-top: 12rem !important;" autocomplete="off">
             {%csrf_token%}
             {%if message%}
             <p>{{message}}</p>

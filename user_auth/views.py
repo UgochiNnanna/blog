@@ -37,7 +37,7 @@ def LoginUser(request):
     context = {
         "message":message
     }
-    return render(request, "login.html", context)
+    return render(request, "sign_in.html", context)
 
 def LogoutUser(request):
     user = request.user
